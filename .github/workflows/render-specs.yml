@@ -1,0 +1,28 @@
+name: render-specs
+on:
+  push:
+    branches:
+      - initial-spec-draft
+
+jobs:
+  build-and-deploy-spec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install and Build
+        run: |
+          npm install
+          node -e "require('spec-up')({ nowatch: true })"
+          rm -rf node_modules
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          allow_empty_commit: true
+          force_orphan: true
