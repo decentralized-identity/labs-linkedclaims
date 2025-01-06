@@ -37,8 +37,6 @@ dd {
   <dt>Feedback:</dt>
   <dd><a href="https://github.com/org/repo">GitHub Issues</a></dd>
   
-  <dt>Related Documents:</dt>
-  <dd><a href="#">tbd</a></dd>
 </dl>
 
 </details>
@@ -48,6 +46,14 @@ dd {
 Evaluating the credibiity of digital information about the real world is a difficult problem, one which is not sufficiently addressed by cryptographic signing or blockchain validation.  An open, interoperable, cross-domain web of trust could enable robust credibility assessment; a number of projects pursue this goal.  LinkedClaims is a minimal standard to enable links between independent claims: each claim must be addressable (ie have a URI), must be about an addressable subject, and must be cryptographically signed.  Several desirable features are also identified, such as the ability to make a determinate hash of claim content.  The LinkedClaim pattern already exists in several independent projects and implementations; by defining profiles or mappings for these existing data structures to a LinkedClaim data model, we enable linking them together without requiring changes to their native formats.
 
 This specification defines the fundamental requirements for a claim to be classified as a "linked claim." It introduces the concept of a LinkedClaim profile, outlines how an ecosystem can achieve conformance with the linked claim requirements, and provides guidance on specifying additional requirements through a profile. However, it does not define any specific profile or provide an implementation guide, which are addressed in separate documents.
+
+## Related Work
+
+The LinkedClaims specification is being developed alongside several complementary initiatives:
+
+* [Progressive Trust](TBD) - A framework for building trust through incremental verification and validation of claims
+* [digest Multibase Hashlink](TBD) - TBD
+* [inbox](TBD) - The use of an ActivityPub compatible inbox for replies to claims
 
 ## Status of This Document
 
