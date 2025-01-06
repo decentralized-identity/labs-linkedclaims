@@ -94,10 +94,16 @@ dd {
 <p>Decentralized Web Node is a <em>DRAFT</em> specification under development within the <a path-0="identity.foundation"href="https://identity.foundation" >Decentralized Identity Foundation</a> (DIF). It is an active work item of the <a path-0="github.com"path-1="decentralized-identity"path-2="labs"path-3="blob"path-4="main"path-5="proposals"path-6="linked_claims"path-7="001_proposal.md"href="https://github.com/decentralized-identity/labs/blob/main/proposals/linked_claims/001_proposal.md" >Linked Claim Incubation Lab at DIF</a>  It incorporates requirements and learnings from diverse stakeholders across sectors into a shared specification that meets the collective needs of the community.</p>
 <p>The specification will be updated to incorporate feedback, from DIF members and the wider community, with a reference implementation being developed that exercises the features and requirements defined here. We encourage reviewers to submit <a path-0="github.com"path-1="decentralized-identity"path-2="labs-linkedclaims"path-3="issues"href="https://github.com/decentralized-identity/labs-linkedclaims/issues" >GitHub Issues</a> as the means by which to communicate feedback and contributions.</p>
 <h2 id="terminology"><a class="toc-anchor" href="#terminology" >§</a> Terminology</h2>
-<p><span id="term:did">DID</span> ~ A Decentralized Identifier as defined in <a path-0="www.w3.org"path-1="TR"path-2="did-core"path-3=""href="https://www.w3.org/TR/did-core/" ><span>https://www.w3.org/TR/did-core/</span></a></p>
-<p><span id="term:linked-claim">Linked Claim</span> ~ A structured, cryptographically signed document with a URI subject that is itself addressable at a URI, following at least the MUST requirements detailed below.</p>
-<p><span id="term:signer">Signer</span> ~ The entity that cryptographically signs a claim (known as the “issuer” in Verifiable Credentials)</p>
-<p><span id="term:uri">URI</span> ~ a Uniform Resource Identifier as defined in <a path-0="datatracker.ietf.org"path-1="doc"path-2="html"path-3="rfc3986"href="https://datatracker.ietf.org/doc/html/rfc3986" ><span>https://datatracker.ietf.org/doc/html/rfc3986</span></a></p>
+<dl>
+<dt><span id="term:did">DID</span></dt>
+<dd>A Decentralized Identifier as defined in <a path-0="www.w3.org"path-1="TR"path-2="did-core"path-3=""href="https://www.w3.org/TR/did-core/" ><span>https://www.w3.org/TR/did-core/</span></a></dd>
+<dt><span id="term:linked-claim">Linked Claim</span></dt>
+<dd>A structured, cryptographically signed document with a URI subject that is itself addressable at a URI, following at least the MUST requirements detailed below.</dd>
+<dt><span id="term:signer">Signer</span></dt>
+<dd>The entity that cryptographically signs a claim (known as the “issuer” in Verifiable Credentials)</dd>
+<dt><span id="term:uri">URI</span></dt>
+<dd>a Uniform Resource Identifier as defined in <a path-0="datatracker.ietf.org"path-1="doc"path-2="html"path-3="rfc3986"href="https://datatracker.ietf.org/doc/html/rfc3986" ><span>https://datatracker.ietf.org/doc/html/rfc3986</span></a></dd>
+</dl>
 <h2 id="core-pattern"><a class="toc-anchor" href="#core-pattern" >§</a> Core Pattern</h2>
 <div class="mermaid">
 graph LR
