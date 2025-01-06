@@ -63,13 +63,17 @@ The specification will be updated to incorporate feedback, from DIF members and 
 
 ## Terminology
 
-[[def:DID]] ~ A Decentralized Identifier as defined in https://www.w3.org/TR/did-core/
+[[def:DID]]
+~ A Decentralized Identifier as defined in https://www.w3.org/TR/did-core/
 
-[[def:Linked Claim]] ~ A structured, cryptographically signed document with a URI subject that is itself addressable at a URI, following at least the MUST requirements detailed below.
+[[def:Linked Claim]]
+~ A structured, cryptographically signed document with a URI subject that is itself addressable at a URI, following at least the MUST requirements detailed below.
 
-[[def:Signer]] ~ The entity that cryptographically signs a claim (known as the "issuer" in Verifiable Credentials)
+[[def:Signer]]
+~ The entity that cryptographically signs a claim (known as the "issuer" in Verifiable Credentials)
 
-[[def:URI]] ~ a Uniform Resource Identifier as defined in https://datatracker.ietf.org/doc/html/rfc3986
+[[def:URI]]
+~ a Uniform Resource Identifier as defined in https://datatracker.ietf.org/doc/html/rfc3986
 
 ## Core Pattern
 
