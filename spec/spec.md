@@ -57,50 +57,69 @@ The specification will be updated to incorporate feedback, from DIF members and 
 
 ## Terminology
 
+[[def:DID]] ~ A Decentralized Identifier as defined in https://www.w3.org/TR/did-core/
+
 [[def:Linked Claim]] ~ A structured, cryptographically signed document with a URI subject that is itself addressable at a URI, following at least the MUST requirements detailed below.
+
+[[def:Signer]] ~ The entity that cryptographically signs a claim (known as the "issuer" in Verifiable Credentials)
 
 [[def:URI]] ~ a Uniform Resource Identifier as defined in https://datatracker.ietf.org/doc/html/rfc3986
 
-## Architecture
+## Core Pattern
 
 ```mermaid
 
 graph LR
-    subgraph Claim A
-        A_id["id: URI_A"]
-        A_subject["subject: URI_B"]
-        A_content["content: {...}"]
-        A_sig["signature: xyz"]
-    end
-    
-    subgraph Claim B
+    subgraph Claim-B
         B_id["id: URI_B"]
-        B_subject["subject: URI_X"]
+        B_subject["subject: URI_A"]
         B_content["content: {...}"]
         B_sig["signature: xyz"]
     end
     
-    subgraph Claim C
-        C_id["id: URI_C"]
-        C_subject["subject: URI_B"]
-        C_content["content: {...}"]
-        C_sig["signature: xyz"]
+    subgraph Claim-A
+        A_id["id: URI_A"]
+        A_subject["subject: URL_X"]
+        A_content["content: {...}"]
+        A_sig["signature: xyz"]
     end
 
-    %% Claims point to target claim's ID URI
-    A_subject -.-> B_id
-    C_subject -.-> B_id
-    
-    classDef claim fill:#e6e6fa,stroke:#333,stroke-width:2px;
-    classDef claimPart fill:#f0f0f0,stroke:#666,stroke-width:1px;
-    class A_id,B_id,C_id,A_subject,B_subject,C_subject,A_content,B_content,C_content,A_sig,B_sig,C_sig claimPart;
-    
-    style Claim A fill:#e6e6fa,stroke:#333,stroke-width:2px;
-    style Claim B fill:#e6e6fa,stroke:#333,stroke-width:2px;
-    style Claim C fill:#e6e6fa,stroke:#333,stroke-width:2px;
+    subgraph Resource
+        X["URL_X"]
+    end
 
-    linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5;
+    %% Claims point to their subjects
+    B_subject -.-> A_id
+    A_subject -.-> X
+    
+    classDef claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    classDef claimPart fill:#ffffff,stroke:#666,stroke-width:1px
+    classDef resource fill:#e8f4f8,stroke:#333,stroke-width:2px
+    
+    class B_id,B_subject,B_content,B_sig,A_id,A_subject,A_content,A_sig claimPart
+    style Claim-A fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Claim-B fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Resource fill:#e8f4f8,stroke:#333,stroke-width:2px
+    style X fill:#ffffff
+    
+    linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
 ```
 
+## LinkedClaim Conformance Requirements
 
+A LinkedClaim:
+
+* **MUST** have a subject that can be any valid URI
+* **MUST** itself have an identifier that is a well-formed URI (URN is acceptable)
+* **MUST** be cryptographically signed, such as with a DID
+* **SHOULD** provide a mechanism to retrieve deterministic machine-readable content from its URI
+* **SHOULD** include a date that is in the signed data
+* **SHOULD** contain evidence such as links to a source or attachments, optionally hashlinked
+* **SHOULD** have a URI-addressable cryptographic signer
+* **MAY** have a narrative statement
+* **MAY** be a W3C Verifiable Credential or similar digital credential specification
+* **MAY** provide a way for the signer to mutate or revoke the claim
+* **MAY** have a subject that itself is a claim
+* **MAY** have a separate published date and effective date
+* **MAY** be public or access controlled
 
