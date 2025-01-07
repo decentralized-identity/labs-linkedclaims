@@ -152,12 +152,160 @@ graph LR
 <li><strong>SHOULD</strong> contain evidence such as links to a source or attachments, optionally hashlinked</li>
 <li><strong>SHOULD</strong> have a URI-addressable cryptographic signer</li>
 <li><strong>MAY</strong> have a narrative statement</li>
+<li><strong>MAY</strong> have a subject that itself is a claim</li>
 <li><strong>MAY</strong> be a W3C Verifiable Credential or similar digital credential specification</li>
 <li><strong>MAY</strong> provide a way for the signer to mutate or revoke the claim</li>
-<li><strong>MAY</strong> have a subject that itself is a claim</li>
+<li><strong>MAY</strong> provide an inbox or reply-to address to notify of claims made about this claim</li>
 <li><strong>MAY</strong> have a separate published date and effective date</li>
 <li><strong>MAY</strong> be public or access controlled</li>
 </ul>
+<h2 id="advanced-patterns"><a class="toc-anchor" href="#advanced-patterns" >§</a> Advanced Patterns</h2>
+<p><em>enabled by implementing the SHOULD recommendations</em></p>
+<h3 id="signer-attestation-and-content-integrity-pattern"><a class="toc-anchor" href="#signer-attestation-and-content-integrity-pattern" >§</a> Signer Attestation and Content Integrity Pattern</h3>
+<div class="mermaid">
+graph LR
+    subgraph Claim-A
+        A_id["id: URI_A"]
+        A_subject["subject: did:example:456"]
+        A_content["content: {...}"]
+        A_sig["signature: xyz"]
+    end
+    
+    subgraph Claim-B
+        B_id["id: URI_B"]
+        B_subject["subject: URI_X"]
+        B_content["content: {...}"]
+        B_sig["signature: xyz"]
+        B_signer["signer: did:example:456"]
+        B_evidence["evidence: {
+            url: https://example.com/doc,
+            hash: abc123
+        }"]
+    end
+
+    subgraph Evidence
+        E["Document"]
+    end
+
+    %% Only Claim B points to evidence, A points to B's signer
+    A_subject -.-> B_signer
+    B_evidence -.-> E
+    
+    classDef claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    classDef claimPart fill:#ffffff,stroke:#666,stroke-width:1px
+    classDef evidence fill:#f0fff0,stroke:#333,stroke-width:2px
+    
+    class A_id,A_subject,A_content,A_sig,B_id,B_subject,B_content,B_sig,B_signer,B_evidence claimPart
+    style Claim-A fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Claim-B fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Evidence fill:#f0fff0,stroke:#333,stroke-width:2px
+    
+    linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
+</div>
+<h3 id="public-evidence-supporting-a-private-claim"><a class="toc-anchor" href="#public-evidence-supporting-a-private-claim" >§</a> Public evidence supporting a Private Claim</h3>
+<div class="mermaid">
+graph LR
+    subgraph Private-Wallet
+        subgraph Private-Claim
+            P_id["id: URI_P"]
+            P_subject["subject: URI_X"]
+            P_content["content: {...}"]
+            P_sig["signature: xyz"]
+        end
+    end
+
+    subgraph Public-Validations
+        subgraph Validation-A
+            V1_id["id: URI_V1"]
+            V1_subject["subject: URI_P"]
+            V1_content["validation data"]
+        end
+        subgraph Evidence
+            E["Public Evidence"]
+        end
+    end
+
+    %% Links
+    V1_subject -.-> P_id
+    V1_content -.-> E
+    
+    classDef claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    classDef claimPart fill:#ffffff,stroke:#666,stroke-width:1px
+    classDef private fill:#fff0f5,stroke:#333,stroke-width:2px
+    classDef public fill:#f0fff0,stroke:#333,stroke-width:2px
+    
+    class P_id,P_subject,P_content,P_sig,V1_id,V1_subject,V1_content claimPart
+    style Private-Wallet fill:#fff0f5,stroke:#333,stroke-width:2px
+    style Public-Validations fill:#f0fff0,stroke:#333,stroke-width:2px
+    style Private-Claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Validation-A fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Evidence fill:#ffffff,stroke:#666,stroke-width:1px
+    
+    linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
+</div>
+<h2 id="minimal-example"><a class="toc-anchor" href="#minimal-example" >§</a> Minimal Example</h2>
+<p>Fulfills only the MUST requirements.</p>
+<pre><code>{
+  &quot;id&quot;: &quot;https://claims.example.com/claim/123&quot;,
+  &quot;subject&quot;: &quot;https://resource.example.com/entity/456&quot;,
+  &quot;signature&quot;: {
+    &quot;type&quot;: &quot;Ed25519Signature2020&quot;,
+    &quot;verificationMethod&quot;: &quot;did:example:abc#key-1&quot;,
+    &quot;signatureValue&quot;: &quot;zQeVbY4oey5q66...&quot;
+  }
+}
+</code></pre>
+<h2 id="advanced-example"><a class="toc-anchor" href="#advanced-example" >§</a> Advanced Example</h2>
+<p>Fulfills MUST requirements and nearly all of the recommendations:</p>
+<ul>
+<li><strong>SHOULD</strong> include a date that is in the signed data</li>
+<li><strong>SHOULD</strong> contain evidence such as links to a source or attachments, optionally hashlinked</li>
+<li><strong>SHOULD</strong> have a URI-addressable cryptographic signer</li>
+<li><strong>MAY</strong> have a subject that itself is a claim</li>
+<li><strong>MAY</strong> be a W3C Verifiable Credential or similar digital credential specification</li>
+<li><strong>MAY</strong> provide a way for the signer to mutate or revoke the claim</li>
+<li><strong>MAY</strong> provide an inbox or reply-to address to notify of claims made about this claim</li>
+<li><strong>MAY</strong> have a separate published date and effective date</li>
+<li><strong>MAY</strong> be public or access controlled</li>
+</ul>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;http://cooperation.org/credentials/v1/&quot;,
+    &quot;https://w3id.org/security/v2&quot;
+  ],
+  &quot;type&quot;: &quot;LinkedClaim&quot;,
+  &quot;id&quot;: &quot;https://claims.example.com/claim/123&quot;,
+  &quot;object&quot;: &quot;https://resource.example.com/entity/456&quot;,
+  &quot;statement&quot;: &quot;This resource has been verified as meeting quality standards&quot;,
+  &quot;effectiveDate&quot;: &quot;2024-01-06T13:42:19Z&quot;,
+  &quot;intendedAudience&quot;: {
+    &quot;type&quot;: &quot;OAuth2Audience&quot;,
+    &quot;id&quot;: &quot;https://api.example.com&quot;,
+    &quot;scope&quot;: [&quot;read:claims&quot;]
+  },
+  &quot;source&quot;: {
+    &quot;type&quot;: &quot;ClaimSource&quot;,
+    &quot;id&quot;: &quot;https://evidence.example.com/doc/789&quot;,
+    &quot;digestMultibase&quot;: &quot;zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e&quot;,
+    &quot;dateObserved&quot;: &quot;2024-01-06T12:00:00Z&quot;,
+    &quot;howKnown&quot;: &quot;direct observation&quot;,
+    &quot;retrieveFrom&quot;: &quot;https://evidence.example.com/doc/789&quot;
+  },
+  &quot;respondAt&quot;: &quot;https://claims.example.com/claim/123/responses&quot;,
+  &quot;aspect&quot;: &quot;quality verification&quot;,
+  &quot;confidence&quot;: 0.95,
+  &quot;proof&quot;: {
+    &quot;type&quot;: &quot;Ed25519Signature2020&quot;,
+    &quot;created&quot;: &quot;2024-01-06T13:42:19Z&quot;,
+    &quot;verificationMethod&quot;: &quot;did:example:abc#key-1&quot;,
+    &quot;proofPurpose&quot;: &quot;assertionMethod&quot;,
+    &quot;proofValue&quot;: &quot;zQeVbY4oey5q66...&quot;
+  }
+}
+</code></pre>
+<h2 id="deterministic-vs-human-readable-content"><a class="toc-anchor" href="#deterministic-vs-human-readable-content" >§</a> Deterministic vs Human-readable content</h2>
+<p>A tension exists between providing a human-readable URL, and a machine readable and hashable data structure that can be referenced in a way to guarantee content integrity.  Providing two distinct views does not guarantee that the data in the human readable view is the same as the machine readable data.</p>
+<p>…to be continued.</p>
 
                     </article>    
       
@@ -188,6 +336,15 @@ graph LR
 <li><a href="#terminology" >Terminology</a></li>
 <li><a href="#core-pattern" >Core Pattern</a></li>
 <li><a href="#linkedclaim-conformance-requirements" >LinkedClaim Conformance Requirements</a></li>
+<li><a href="#advanced-patterns" >Advanced Patterns</a>
+<ul>
+<li><a href="#signer-attestation-and-content-integrity-pattern" >Signer Attestation and Content Integrity Pattern</a></li>
+<li><a href="#public-evidence-supporting-a-private-claim" >Public evidence supporting a Private Claim</a></li>
+</ul>
+</li>
+<li><a href="#minimal-example" >Minimal Example</a></li>
+<li><a href="#advanced-example" >Advanced Example</a></li>
+<li><a href="#deterministic-vs-human-readable-content" >Deterministic vs Human-readable content</a></li>
 </ul>
 
                       </div>
