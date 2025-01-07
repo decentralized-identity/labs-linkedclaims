@@ -127,9 +127,10 @@ A LinkedClaim:
 * **SHOULD** contain evidence such as links to a source or attachments, optionally hashlinked
 * **SHOULD** have a URI-addressable cryptographic signer
 * **MAY** have a narrative statement
+* **MAY** have a subject that itself is a claim
 * **MAY** be a W3C Verifiable Credential or similar digital credential specification
 * **MAY** provide a way for the signer to mutate or revoke the claim
-* **MAY** have a subject that itself is a claim
+* **MAY** provide an inbox or reply-to address to notify of claims made about this claim
 * **MAY** have a separate published date and effective date
 * **MAY** be public or access controlled
 
@@ -225,6 +226,8 @@ graph LR
 
 ## Minimal Example
 
+Fulfills only the MUST requirements.
+
 ```
 {
   "id": "https://claims.example.com/claim/123",
@@ -238,6 +241,18 @@ graph LR
 ```
 
 ## Advanced Example
+
+Fulfills MUST requirements and nearly all of the recommendations:
+
+* **SHOULD** include a date that is in the signed data
+* **SHOULD** contain evidence such as links to a source or attachments, optionally hashlinked
+* **SHOULD** have a URI-addressable cryptographic signer
+* **MAY** have a subject that itself is a claim
+* **MAY** be a W3C Verifiable Credential or similar digital credential specification
+* **MAY** provide a way for the signer to mutate or revoke the claim
+* **MAY** provide an inbox or reply-to address to notify of claims made about this claim
+* **MAY** have a separate published date and effective date
+* **MAY** be public or access controlled
 
 ```
 {
@@ -275,3 +290,9 @@ graph LR
   }
 }
 ```
+
+## Deterministic vs Human-readable content
+
+A tension exists between providing a human-readable URL, and a machine readable and hashable data structure that can be referenced in a way to guarantee content integrity.  Providing two distinct views does not guarantee that the data in the human readable view is the same as the machine readable data.
+
+...to be continued.
