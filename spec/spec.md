@@ -133,3 +133,145 @@ A LinkedClaim:
 * **MAY** have a separate published date and effective date
 * **MAY** be public or access controlled
 
+## Advanced Patterns 
+
+_enabled by implementing the SHOULD recommendations_
+
+### Signer Attestation and Content Integrity Pattern
+```mermaid
+
+graph LR
+    subgraph Claim-A
+        A_id["id: URI_A"]
+        A_subject["subject: did:example:456"]
+        A_content["content: {...}"]
+        A_sig["signature: xyz"]
+    end
+    
+    subgraph Claim-B
+        B_id["id: URI_B"]
+        B_subject["subject: URI_X"]
+        B_content["content: {...}"]
+        B_sig["signature: xyz"]
+        B_signer["signer: did:example:456"]
+        B_evidence["evidence: {
+            url: https://example.com/doc,
+            hash: abc123
+        }"]
+    end
+
+    subgraph Evidence
+        E["Document"]
+    end
+
+    %% Only Claim B points to evidence, A points to B's signer
+    A_subject -.-> B_signer
+    B_evidence -.-> E
+    
+    classDef claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    classDef claimPart fill:#ffffff,stroke:#666,stroke-width:1px
+    classDef evidence fill:#f0fff0,stroke:#333,stroke-width:2px
+    
+    class A_id,A_subject,A_content,A_sig,B_id,B_subject,B_content,B_sig,B_signer,B_evidence claimPart
+    style Claim-A fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Claim-B fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Evidence fill:#f0fff0,stroke:#333,stroke-width:2px
+    
+    linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
+```
+### Public evidence supporting a Private Claim
+
+```mermaid
+
+graph LR
+    subgraph Private-Wallet
+        subgraph Private-Claim
+            P_id["id: URI_P"]
+            P_subject["subject: URI_X"]
+            P_content["content: {...}"]
+            P_sig["signature: xyz"]
+        end
+    end
+
+    subgraph Public-Validations
+        subgraph Validation-A
+            V1_id["id: URI_V1"]
+            V1_subject["subject: URI_P"]
+            V1_content["validation data"]
+        end
+        subgraph Evidence
+            E["Public Evidence"]
+        end
+    end
+
+    %% Links
+    V1_subject -.-> P_id
+    V1_content -.-> E
+    
+    classDef claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    classDef claimPart fill:#ffffff,stroke:#666,stroke-width:1px
+    classDef private fill:#fff0f5,stroke:#333,stroke-width:2px
+    classDef public fill:#f0fff0,stroke:#333,stroke-width:2px
+    
+    class P_id,P_subject,P_content,P_sig,V1_id,V1_subject,V1_content claimPart
+    style Private-Wallet fill:#fff0f5,stroke:#333,stroke-width:2px
+    style Public-Validations fill:#f0fff0,stroke:#333,stroke-width:2px
+    style Private-Claim fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Validation-A fill:#f8f8ff,stroke:#333,stroke-width:2px
+    style Evidence fill:#ffffff,stroke:#666,stroke-width:1px
+    
+    linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
+```
+
+## Minimal Example
+
+```
+{
+  "id": "https://claims.example.com/claim/123",
+  "subject": "https://resource.example.com/entity/456",
+  "signature": {
+    "type": "Ed25519Signature2020",
+    "verificationMethod": "did:example:abc#key-1",
+    "signatureValue": "zQeVbY4oey5q66..."
+  }
+}
+```
+
+## Advanced Example
+
+```
+{
+  "@context": [
+    "http://cooperation.org/credentials/v1/",
+    "https://w3id.org/security/v2"
+  ],
+  "type": "LinkedClaim",
+  "id": "https://claims.example.com/claim/123",
+  "object": "https://resource.example.com/entity/456",
+  "statement": "This resource has been verified as meeting quality standards",
+  "effectiveDate": "2024-01-06T13:42:19Z",
+  "intendedAudience": {
+    "type": "OAuth2Audience",
+    "id": "https://api.example.com",
+    "scope": ["read:claims"]
+  },
+  "source": {
+    "type": "ClaimSource",
+    "id": "https://evidence.example.com/doc/789",
+    "digestMultibase": "zQmWvQxTqbG2Z9HPJgG57jjwR154cKhbtJenbyYTWkjgF3e",
+    "dateObserved": "2024-01-06T12:00:00Z",
+    "howKnown": "direct observation",
+    "retrieveFrom": "https://evidence.example.com/doc/789"
+  },
+  "respondAt": "https://claims.example.com/claim/123/responses",
+  "aspect": "quality verification",
+  "confidence": 0.95,
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2024-01-06T13:42:19Z",
+    "verificationMethod": "did:example:abc#key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "zQeVbY4oey5q66..."
+  }
+}
+```
