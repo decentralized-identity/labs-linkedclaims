@@ -41,6 +41,14 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 
 ## 4. Related Existing Projects
 
+| Project | Type | Implementation | Vocabulary | Pattern Match | Link to Example Claim |
+|---------|------|----------------|------------|---------------|---------------------|
+| attest.sh | Blockchain Attestation | Ethereum | Schema.org + Custom | On-chain attestations with evidence linking |  |
+| Trustgraph.net | Graph Database | Neo4j | Atoms | Trust network with linked claims | [Example](https://trustgraph.net/) |
+| Issuer Registries | Registry | Various | W3C VC | Issuer verification chains | [Example Registry](https://credentialengine.org/resources/issuer-registries-establishing-trust-privacy-and-efficiency-in-verifying-credential-issuers/) |
+| Proof of Humanity | Identity Verification | Ethereum | Custom | Human verification with vouching chains | [PoH](https://proofofhumanity.id) |
+| Krebit | Social Verification | IPFS/Ceramic | JSON-LD | Verifiable experience claims | [Example](https://krebit.id/) |
+| Orange Protocol | Trust Framework | Graph Protocol | Trust Schema | Reputation attestations | [Docs](https://www.orangeprotocol.io/) |
 
 
 ## 5. Implementation Guide
