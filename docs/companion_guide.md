@@ -17,12 +17,20 @@
 ### Github
 
 
-## 1. Understanding LinkedClaims
-### What it is
- LinkedClaims is a pattern for creating verifiable, interconnected claims in decentralized systems. It provides a foundation for building trust networks by enabling claims to be linked, verified, and trusted across different platforms and implementations. The standard requires that each claim must have its own URI identifier, must reference a subject via URI, and must be cryptographically signed. This allows claims to be connected together to form verifiable chains of trust while maintaining flexibility in implementation.
+## 1. Getting Started
+### Introduction
+ This companion guide serves as a practical resource for implementing the LinkedClaims pattern. While the LinkedClaims specification defines the requirements for creating verifiable, interconnected claims, this guide provides implementation guidance, best practices, and real-world examples. It helps developers and users to understand how to create and use claims that meet the core requirements: having a URI identifier, referencing a subject via URI, and including cryptographic signatures. While the formal specification defines the technical requirements for LinkedClaims, this guide shows you how to put those requirements into practice in real-world systems. Through examples and practical advice, this guide demonstrates how to implement these requirements and build trust networks across different platforms.
+
+ LinkedClaims iteslf  is a pattern for creating verifiable, interconnected claims in decentralized systems. It provides a foundation for building trust networks by enabling claims to be linked, verified, and trusted across different platforms and implementations. The standard requires that each claim must have its own URI identifier, must reference a subject via URI, and must be cryptographically signed. This allows claims to be connected together to form verifiable chains of trust while maintaining flexibility in implementation.
+
+ Our goal is to help you move from understanding what LinkedClaims requires to knowing how to fulfill those requirements effectively in your own systems. Whether you're building a new implementation, integrating with existing ones or using LinkedClaims, this guide will provide the practical insights you need.
  
-### Why use it
+### Importance
+  This companion guide helps you navigate the implementation and use of LinkedClaims in practical settings. Whether you're new to LinkedClaims or looking to better understand existing implementations, this guide provides clear explanations, real-world examples, and best practices from existing projects.
+
  LinkedClaims addresses the fundamental challenge of establishing trust in decentralized environments by providing a standardized way to connect and verify claims across different systems. It enables organizations to build trust networks that are interoperable, verifiable, and privacy-preserving. By supporting creation of claims about any subject, it allows for flexible trust models that can evolve over time through progressive attestation building.
+
+ Through this guide, you'll find solutions to common challenges, guidance for different use cases, and practical insights drawn from real implementations. Our goal is to bridge the gap between the formal specification and practical application, helping you understand not just what LinkedClaims is, but how to effectively use it in your own context.
 
 ### Core concepts
 - **Claims**: Structured, signed documents making assertions about subjects
@@ -37,9 +45,6 @@
 
 - **Cryptographic Signatures**: Claims are signed by issuers
 
-### Benefits
- It provides a flexible yet robust foundation for building decentralized trust systems. Its architecture enables seamless interoperability between different platforms while maintaining strong security through cryptographic verification. The system supports creating claims about any subject, making it suitable for a wide range of use cases from public attestations to private credentials. Its progressive trust building capability allows relationships to develop naturally over time through linked attestations.
-
 ### Disclaimer
   This guide serves as a practical resource for understanding and implementing LinkedClaims. Drawing from actual implementations in humanitarian aid tracking and community impact verification, we share insights and approaches that have worked in real situations.
 While we offer recommendations and best practices, this document is not a technical specification. Users should view these suggestions as starting points rather than strict requirements. Every implementation is unique, and organizations should adapt these practices to their specific needs and circumstances.
@@ -48,6 +53,8 @@ We encourage readers to combine these insights with other resources, expert advi
 
 ### Target Audience 
 Developers who intend to implement the LinkedClaims specification, technical community that is committed to building a more decentralized and open web trust
+
+### Guide Structure
 
 ## 2.Technology Comparison
 Will show where LinkedClaims fits, help in decision-making, clarifiy unique value proposition and demonstrates key differentiators
