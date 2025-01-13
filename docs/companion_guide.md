@@ -90,7 +90,6 @@ The organization created a multi-layered verification system:
 
 ![Screenshot from 2025-01-14 01-23-04](https://github.com/user-attachments/assets/a1cf26a5-dd27-46c6-a738-2b8369de4e00)
 ![Screenshot from 2025-01-14 01-22-41](https://github.com/user-attachments/assets/e188aa11-6c6b-4bfa-8028-1f08e302d34c)
-![Screenshot from 2025-01-14 01-22-56](https://github.com/user-attachments/assets/ebb6b2f2-4a08-4cbd-bb5f-81af8b836bb6)
 
 #### Technical Implementation
 
@@ -121,17 +120,31 @@ Connected trust chains across stakeholders
 High confidence ratings through multiple validations
 
 
-[AMURT Initial Claim]
-         ↓
-    [Validations]
-    ↙     ↓     ↘
-[Gov't]  [Staff]  [Community]
-    ↘     ↓     ↙
-  [Impact Evidence]
-         ↓
-[Beneficiary Claims/Attestations]
-         ↓
- [Site Visit Reports-Trust Score: 0.95]
+                                                ┌────────────────────┐
+                                                │AMURT Initial Claim │
+                                                └────────┬───────────┘
+                                                        ▼
+                                                ┌─────────────────┐
+                                                │   Validations   │
+                                                └────────┬────────┘
+                                          ┌─────────┬────────┬─────────┐
+                                          ▼         ▼        ▼         ▼
+                                    ┌─────────┐ ┌──────┐ ┌────────┐ ┌─────────────┐
+                                    │  Gov't  │ │Staff │ │Community││Site Visits  │
+                                    └────┬────┘ └──┬───┘ └───┬────┘ └────┬────────┘
+                                         └────────┬─────────┬──────────┘
+                                                 ▼         ▼
+                                        ┌─────────────────────────┐
+                                        │    Impact Evidence      │
+                                        └────────────┬────────────┘
+                                                    ▼
+                                        ┌───────────────────────────────┐
+                                        │Beneficiary Claims/Attestations│
+                                        └────────────┬──────────────────┘
+                                                    ▼
+                                        ┌─────────────────────────────────────┐
+                                        │Site Visit Reports-Trust Score: 0.95 │
+                                        └─────────────────────────────────────┘
 
 This case study demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
 
