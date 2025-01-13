@@ -208,13 +208,13 @@ Verification systems provide the foundation for independently validating claims.
   "amt": 1200,
   "confidence": 0.8,
   "name": "Skill Verification for Jane Doe",
-  "subject": "Jane Doe",
+  "subject": "https://www.janedoe.com",
   "statement": "Jane Doe is skilled in full-stack web development.",
   "sourceURI": "https://example.com/verification/jane",
   "howKnown": "FIRST_HAND",
   "effectiveDate": "2025-01-13T17:04:02.864Z",
   "claimAddress": "0x123abc...",
-  "aspect": "Professional Skills",
+  "aspect": "aspect:technical",
   "images": [
     {
       "metadata": {
