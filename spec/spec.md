@@ -115,6 +115,10 @@ graph LR
     linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
 ```
 
+<div class="caption">In this example. Claim-A makes a statement about some existing subject with a URL. Claim-A itself has an identifier, URI_A, and Claim-B uses this to make a statement about Claim-A.  For example, Claim-B might be a corroboration or a rejection of Claim-A</div> 
+
+---
+
 ## LinkedClaim Conformance Requirements
 
 A LinkedClaim:
@@ -180,6 +184,10 @@ graph LR
     
     linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
 ```
+<div class="caption">Here Claim-A makes an attestation specifically about the signer of Claim-B.  Claim-B also has an evidence field which points to an external URL, and includes a hash of the evidence contents to ensure integrity.</div> 
+
+---
+
 ### Public evidence supporting a Private Claim
 
 ```mermaid
@@ -223,6 +231,10 @@ graph LR
     
     linkStyle 0,1 stroke:#666,stroke-width:2px,stroke-dasharray: 5
 ```
+
+<div class="caption">In this pattern, we have a Private-Claim held in a Private-Wallet, which the holder may choose to show upon request; in addition a public Validation-A has been made of Private-Claim, with evidence, which a viewer can see and assemble together with the presented private claim.  Viewers without access to the private claim will only see the validation without the private claim details (perhaps containing personal information).</div> 
+
+---
 
 ## Minimal Example
 
