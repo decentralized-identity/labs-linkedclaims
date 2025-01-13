@@ -13,6 +13,7 @@
 ### Contributors
 - Agnes Koinange
 - Golda Velez
+- Orjiene Kenechukwu
   
 ### Github
 
@@ -69,20 +70,167 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 
 | Project | Type | Implementation | Vocabulary | Pattern Match | Links |
 |---------|------|----------------|------------|---------------|---------------------|
-| attest.sh | Blockchain Attestation | Ethereum | Schema.org + Custom | On-chain attestations with evidence linking |  |
+| **attest.sh** | Blockchain Attestation | Ethereum | Schema.org + Custom | On-chain attestations with evidence linking | [attest.sh](https://attest.org/) |
 | Trustgraph.net | Graph Database | Neo4j | Atoms | Trust network with linked claims | [Trustgraph.net](https://trustgraph.net/) |
-| Issuer Registries | Registry | Various | W3C VC | Issuer verification chains | [Issuer Registries](https://credentialengine.org/resources/issuer-registries-establishing-trust-privacy-and-efficiency-in-verifying-credential-issuers/) |
-| Proof of Humanity | Identity Verification | Ethereum | Custom | Human verification with vouching chains | [PoH](https://proofofhumanity.id) |
-| Krebit | Social Verification | IPFS/Ceramic | JSON-LD | Verifiable experience claims | [Krebit](https://krebit.id/) |
-| Orange Protocol | Trust Framework | Graph Protocol | Trust Schema | Reputation attestations | [Docs](https://www.orangeprotocol.io/) |
+| **Issuer Registries** | Registry | Various | W3C VC | Issuer verification chains | [Issuer Registries](https://credentialengine.org/resources/issuer-registries-establishing-trust-privacy-and-efficiency-in-verifying-credential-issuers/) |
+| **Proof of Humanity** | Identity Verification | Ethereum | Custom | Human verification with vouching chains | [PoH](https://proofofhumanity.id) |
+| **Krebit** | Social Verification | IPFS/Ceramic | JSON-LD | Verifiable experience claims | [Krebit](https://krebit.id/) |
+| **Orange Protocol** | Trust Framework | Graph Protocol | Trust Schema | Reputation attestations | [Docs](https://www.orangeprotocol.io/) |
+| **uPort**           | Self-Sovereign Identity | Ethereum               | JSON-LD, W3C VC            | Identity claims with cryptographic verification        | [uPort](https://www.uport.me/)     |
+| **DIDComm**         | Secure Communication   | Aries Framework         | JSON-LD, DID Documents     | Peer-to-peer verifiable claims exchange                | [DIDComm](https://didcomm.org/)    |
+| **Veramo**          | Verifiable Credential  | Node.js Framework       | JSON-LD, W3C VC            | Decentralized identity and verifiable credential APIs  | [Veramo](https://veramo.io/)       |
+| **Ceramic**         | Decentralized Data Streams | IPFS/Ceramic          | JSON-LD, IDX Protocol      | Linked, updateable claims with decentralized storage   | [Ceramic](https://ceramic.network/) |
+| **BrightID**        | Decentralized Identity | Custom                  | Custom                     | Proof of uniqueness for trust building                 | [BrightID](https://brightid.org/)  |
+| **Serto**           | Decentralized Identity | JSON-LD, W3C VC         | W3C Verifiable Credentials | Linked claims for interoperable identity               | [Serto](https://www.serto.id/)     |
+| **Clerk**           | Authentication Platform | REST APIs, SDKs         | OAuth, OpenID Connect      | User authentication and management flows                    | [Clerk](https://clerk.dev/)        |
 
+
+---
 
 ## 5. Implementation Guide
-Best practices
-- Claim Construction approach
-- Evidence Integration methods
-- Trust Relationships building
-- Verification Systems usageand evidence chains
+
+### **Best Practices for Implementing LinkedClaims**
+
+#### **1. Claim Construction Approach**
+Creating meaningful and verifiable claims is the foundation of LinkedClaims. The provided input schema ensures consistency and facilitates the verification process.
+
+- **Schema Adherence**: Use the schema below to structure claims:
+  ```json
+  {
+    "stars": 0,
+    "amt": 0,
+    "confidence": 0,
+    "name": "string",
+    "subject": "string",
+    "statement": "string",
+    "sourceURI": "string",
+    "howKnown": "FIRST_HAND",
+    "effectiveDate": "2025-01-13T17:04:02.864Z",
+    "claimAddress": "string",
+    "aspect": "string",
+    "images": [
+      {
+        "metadata": {
+          "captian": "string",
+          "description": "string"
+        },
+        "effectiveDate": "2025-01-13T17:04:02.864Z",
+        "digestMultibase": "string"
+      }
+    ],
+    "claim": "string",
+    "object": "string"
+  }
+  ```
+- **Fields Explanation**:
+  - **Core Data**:
+    - `name`: Name of the claim.
+    - `statement`: Description or assertion made by the claim.
+    - `subject`: The entity or object the claim is about.
+    - `aspect`: A specific dimension of the subject being asserted (e.g., "skill" or "identity").
+  - **Verification and Source**:
+    - `sourceURI`: A URI to a resource or evidence supporting the claim.
+    - `howKnown`: The method or relationship through which the claim is known (e.g., "FIRST_HAND").
+    - `effectiveDate`: When the claim takes effect.
+  - **Scoring and Confidence**:
+    - `stars`: A user-provided rating for the claim.
+    - `confidence`: The confidence level associated with the claim.
+    - `amt`: A quantifiable measure tied to the claim (e.g., transaction amount).
+  - **Images**:
+    - Use the `images` array to include multimedia evidence, with fields for metadata, effective date, and cryptographic digests (`digestMultibase`).
+  - **Object Relationship**:
+    - `claimAddress` and `object` link the claim to specific identifiers or objects for additional context.
+
+---
+
+#### **2. Evidence Integration Methods**
+Proper integration of evidence strengthens the credibility and authenticity of claims.
+
+- **Images as Evidence**: Include multimedia elements in the `images` array:
+  - **Metadata**: Use `captian` and `description` fields to describe the image's context.
+  - **Cryptographic Integrity**: Ensure the integrity of the image using `digestMultibase` to store a cryptographic digest of the file.
+  - **Effective Date**: Timestamp the evidence with the `effectiveDate` field to track when it became relevant.
+- **Source Attribution**: Add a `sourceURI` for external references or evidence. Ensure the URI is accessible and verifiable.
+
+---
+
+#### **3. Trust Relationship Building**
+Establishing trust relationships helps create a web of interconnected claims, enhancing the system’s reliability.
+
+- **Progressive Validation**:
+  - Use the `confidence` field to start claims with minimal certainty, allowing subsequent attestations or feedback to improve trust.
+  - Use `stars` for user-generated feedback and ratings.
+- **Aspect Categorization**: Use the `aspect` field to group claims into specific categories or domains for better trust assessment.
+- **Linked Evidence**: Build strong associations between claims using `claimAddress` and `object` fields.
+
+---
+
+#### **4. Verification Systems Usage and Evidence Chains**
+Verification systems provide the foundation for independently validating claims.
+
+- **Cryptographic Proofs**:
+  - Use `digestMultibase` for images to ensure the content’s integrity.
+  - Validate external resources using `sourceURI`.
+- **Reproducible Evidence Chains**:
+  - Start with a base claim linked to an external source or media.
+  - Ensure all linked resources are verifiable and follow a clear validation path.
+- **Standardized Processes**:
+  - Define clear guidelines for validating claims, such as matching `effectiveDate` timestamps or verifying the cryptographic digest of multimedia files.
+
+---
+
+### **Implementation Workflow**
+1. **Construct the Claim**:
+   - Fill core fields like `name`, `subject`, and `statement`.
+   - Add context with `howKnown`, `aspect`, and `effectiveDate`.
+
+2. **Integrate Evidence**:
+   - Use the `images` array to attach multimedia evidence.
+   - Ensure each image includes metadata, a cryptographic digest, and a timestamp.
+
+3. **Build Trust Relationships**:
+   - Leverage `stars` and `confidence` to develop progressive trust for the claim.
+
+4. **Implement Verification**:
+   - Validate cryptographic digests in `digestMultibase`.
+   - Confirm the accessibility and credibility of `sourceURI`.
+
+5. **Iterate and Update**:
+   - Allow claims to evolve by updating fields like `confidence`, `stars`, and `amt` as new evidence or feedback is received.
+
+---
+
+### Example JSON Input for Creating a Claim
+
+```json
+{
+  "stars": 4,
+  "amt": 1200,
+  "confidence": 0.8,
+  "name": "Skill Verification for Jane Doe",
+  "subject": "Jane Doe",
+  "statement": "Jane Doe is skilled in full-stack web development.",
+  "sourceURI": "https://example.com/verification/jane",
+  "howKnown": "FIRST_HAND",
+  "effectiveDate": "2025-01-13T17:04:02.864Z",
+  "claimAddress": "0x123abc...",
+  "aspect": "Professional Skills",
+  "images": [
+    {
+      "metadata": {
+        "captian": "Certificate of Completion",
+        "description": "Certificate from XYZ Academy for completing a full-stack course."
+      },
+      "effectiveDate": "2025-01-10T10:00:00.000Z",
+      "digestMultibase": "zQm12345..."
+    }
+  ],
+  "claim": "Jane Doe completed a full-stack development course.",
+  "object": "Full-stack course certification"
+}
+```
+
+---
 
 
 ## 6. Practical Considerations
@@ -97,6 +245,7 @@ Best practices
 - When should I use LinkedClaims vs other solutions?
 - How do I handle private claims?
 - What are the storage requirements?
+- Are there industry standards that LinkedClaims complies with?
 
 
 ## 8. Reference Implementations
