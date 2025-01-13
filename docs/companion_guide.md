@@ -146,7 +146,7 @@ High confidence ratings through multiple validations
                                         │Site Visit Reports-Trust Score: 0.95 │
                                         └─────────────────────────────────────┘
 
-This case study demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
+This example demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
 
 
 
