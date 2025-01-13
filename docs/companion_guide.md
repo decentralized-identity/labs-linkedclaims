@@ -61,8 +61,83 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 
 
 ## 3.  Real-World Examples
-- Humanitarian aid tracking
-- Community impact verification
+
+### Humanitarian Aid & Community Impact Verification
+
+ ### AMURT Case
+#### Background
+AMURT (Ananda Marga Universal Relief Team) implemented LinkedClaims to validate their humanitarian and development work in Ebonyi, Nigeria. Their implementation showcases how organizations can build verifiable trust networks around development initiatives while maintaining transparency and accountability.
+
+#### Implementation Journey
+
+**Initial Setup**
+AMURT began by establishing their base claims about healthcare service delivery and community development projects. Each claim was assigned a unique URI and cryptographically signed, following LinkedClaims core requirements.
+
+**Building the Trust Network**
+The organization created a multi-layered verification system:
+- Primary claims from AMURT staff about project activities
+- Government partnership validations
+- Community leader attestations
+- Beneficiary testimonials
+- Independent site visit reports
+
+**Verification Process Flow**
+1. AMURT staff document initial claims about project activities
+2. Site visitors validate claims through direct observation
+3. Community leaders and beneficiaries provide attestations
+4. Government partners verify collaboration claims
+5. All claims are linked and cross-referenced through URIs
+
+![Screenshot from 2025-01-14 01-23-04](https://github.com/user-attachments/assets/a1cf26a5-dd27-46c6-a738-2b8369de4e00)
+![Screenshot from 2025-01-14 01-22-41](https://github.com/user-attachments/assets/e188aa11-6c6b-4bfa-8028-1f08e302d34c)
+![Screenshot from 2025-01-14 01-22-56](https://github.com/user-attachments/assets/ebb6b2f2-4a08-4cbd-bb5f-81af8b836bb6)
+
+#### Technical Implementation
+
+**Claim Structure**
+```json
+{
+  "claim": "rated",
+  "effectiveDate": "5/21/2024",
+  "confidence": 0.95,
+  "aspect": "impact:social",
+  "evidence": "site visits, beneficiary feedback"
+}
+```
+
+#### Trust Building Mechanism
+
+High confidence ratings (0.95) supported by multiple validations
+Second-hand verification from trusted community members
+Clear impact assessment through social aspect tracking
+
+
+#### Impact and Results
+The implementation achieved:
+
+Transparent documentation of healthcare initiatives
+Verifiable economic empowerment outcomes
+Connected trust chains across stakeholders
+High confidence ratings through multiple validations
+
+
+[AMURT Initial Claim]
+         ↓
+    [Validations]
+    ↙     ↓     ↘
+[Gov't]  [Staff]  [Community]
+    ↘     ↓     ↙
+  [Impact Evidence]
+         ↓
+[Beneficiary Claims/Attestations]
+         ↓
+ [Site Visit Reports-Trust Score: 0.95]
+
+This case study demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
+
+
+
+
 - OpenCreds skills attestations and verifications
 
 ## 4. Related Existing Projects
