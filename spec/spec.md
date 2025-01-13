@@ -119,7 +119,7 @@ graph LR
 
 A LinkedClaim:
 
-* **MUST** have a subject that can be any valid URI
+* **MUST** have a subject that can be any valid [URI](https://datatracker.ietf.org/doc/html/rfc3986)
 * **MUST** itself have an identifier that is a well-formed URI (URN is acceptable)
 * **MUST** be cryptographically signed, such as with a DID
 * **SHOULD** provide a mechanism to retrieve deterministic machine-readable content from its URI
