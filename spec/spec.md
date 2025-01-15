@@ -26,7 +26,7 @@ dd {
   <dt>Editors:</dt>
   <dd>Golda Velez</dd>
   <dd>Andor Kesselman</dd>
-  <dd>(add here as people contribute)</dd>
+  <dd>Dmitri Zagidulin</dd>
   
   <dt>Authors:</dt>
   <dd>Golda Velez</dd>
@@ -302,6 +302,18 @@ Fulfills MUST requirements and nearly all of the recommendations:
   }
 }
 ```
+
+## Specific Recommendations
+
+### * **SHOULD** contain evidence such as links to a source or attachments, optionally hashlinked
+
+The hashlink should follow the VC Data Model 2.0 spec, specifically the section on Integrity of Related Resources:  https://www.w3.org/TR/vc-data-model-2.0/#integrity-of-related-resources
+
+### **MAY** provide an inbox or reply-to address to notify of claims made about this claim
+
+It is recommended that the *inbox* for a claim behave similar to the ActivityPub inbox as defined at https://www.w3.org/TR/activitypub/#inbox , in particular it should receive HTTP Post requests notifying of claims made about this claim, and return ordered collection of accepted attestations.
+
+Note that the inbox should NOT be required to retain or accept all submitted claims.
 
 ## Deterministic vs Human-readable content
 
