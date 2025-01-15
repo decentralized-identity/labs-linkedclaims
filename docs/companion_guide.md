@@ -9,6 +9,7 @@
 ### Authors
 - Agnes Koinange
 - Golda Velez
+- Orjiene Kenechukwu
 
 ### Contributors
 - Agnes Koinange
@@ -92,9 +93,9 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 ### **Best Practices for Implementing LinkedClaims**
 
 #### **1. Claim Construction Approach**
-Creating meaningful and verifiable claims is the foundation of LinkedClaims. The provided input schema ensures consistency and facilitates the verification process.
+Creating meaningful and verifiable claims is the foundation of LinkedClaims. The provided input schema provides **one example** of how to structure claims, which ensures consistency and facilitates the verification process.
 
-- **Schema Adherence**: Use the schema below to structure claims:
+- **Example Schema**: This schema represents a robust approach to structuring claims:
   ```json
   {
     "stars": 0,
@@ -122,6 +123,9 @@ Creating meaningful and verifiable claims is the foundation of LinkedClaims. The
     "object": "string"
   }
   ```
+
+> **Note**: While this schema is effective for certain use cases, other valid approaches to structuring LinkedClaims may exist.
+
 - **Fields Explanation**:
   - **Core Data**:
     - `name`: Name of the claim.
@@ -200,35 +204,25 @@ Verification systems provide the foundation for independently validating claims.
 
 ---
 
-### Example JSON Input for Creating a Claim
+### **Implementation Workflow**
+1. **Construct the Claim**:
+   - Populate essential fields like `name`, `statement`, `subject`, and `howKnown`.
+   - Include multimedia evidence, source URIs, and timestamps.
 
-```json
-{
-  "stars": 4,
-  "amt": 1200,
-  "confidence": 0.8,
-  "name": "Skill Verification for Jane Doe",
-  "subject": "https://www.janedoe.com",
-  "statement": "Jane Doe is skilled in full-stack web development.",
-  "sourceURI": "https://example.com/verification/jane",
-  "howKnown": "FIRST_HAND",
-  "effectiveDate": "2025-01-13T17:04:02.864Z",
-  "claimAddress": "0x123abc...",
-  "aspect": "aspect:technical",
-  "images": [
-    {
-      "metadata": {
-        "captian": "Certificate of Completion",
-        "description": "Certificate from XYZ Academy for completing a full-stack course."
-      },
-      "effectiveDate": "2025-01-10T10:00:00.000Z",
-      "digestMultibase": "zQm12345..."
-    }
-  ],
-  "claim": "Jane Doe completed a full-stack development course.",
-  "object": "Full-stack course certification"
-}
-```
+2. **Integrate Evidence**:
+   - Attach multimedia evidence in the `images` array.
+   - Ensure all evidence is timestamped and cryptographically verified.
+
+3. **Build Trust Relationships**:
+   - Use `stars` and `confidence` to reflect evolving trust in the claim.
+
+4. **Verify Claims**:
+   - Validate cryptographic digests and ensure source URIs are accessible.
+
+---
+
+### **Positioning of This Implementation**
+This guide represents **one implementation** of LinkedClaims, designed with robustness and semantic clarity in mind. It demonstrates how addressability, evidence integration, and trust relationships can be operationalized effectively. However, LinkedClaims is a flexible framework, and other valid implementations may differ based on specific needs and contexts.
 
 ---
 
