@@ -71,18 +71,17 @@ AMURT (Ananda Marga Universal Relief Team) implemented LinkedClaims to validate 
 #### Implementation Journey
 
 **Initial Setup**
-AMURT began by establishing their base claims about healthcare service delivery and community development projects. Each claim was assigned a unique URI and cryptographically signed, following LinkedClaims core requirements.
+AMURT base claim was sourced from AMURT's public [website](https://amrutfoundation.org.za/) about healthcare service delivery and community development projects. Each claim was assigned a unique URI and cryptographically signed, following LinkedClaims core requirements.
 
 **Building the Trust Network**
-The organization created a multi-layered verification system:
-- Primary claims from AMURT staff about project activities
+The verification system included multiple layers:
 - Government partnership validations
 - Community leader attestations
 - Beneficiary testimonials
-- Independent site visit reports
+- Independent site visit reports 
 
 **Verification Process Flow**
-1. AMURT staff document initial claims about project activities
+1. Base claim from AMURT's public website
 2. Site visitors validate claims through direct observation
 3. Community leaders and beneficiaries provide attestations
 4. Government partners verify collaboration claims
@@ -109,6 +108,7 @@ The organization created a multi-layered verification system:
 High confidence ratings (0.95) supported by multiple validations
 Second-hand verification from trusted community members
 Clear impact assessment through social aspect tracking
+Site visitors validate claims through direct observation
 
 
 #### Impact and Results
@@ -120,9 +120,9 @@ Connected trust chains across stakeholders
 High confidence ratings through multiple validations
 
 
-                                                ┌────────────────────┐
-                                                │AMURT Initial Claim │
-                                                └────────┬───────────┘
+                                                ┌─────────────────────────────────┐
+                                                │Initial Claim from AMURT Website │
+                                                └────────┬────────────────────────┘
                                                         ▼
                                                 ┌─────────────────┐
                                                 │   Validations   │
