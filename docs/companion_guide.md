@@ -100,7 +100,7 @@ Creating meaningful and verifiable claims is the foundation of LinkedClaims. The
   {
     "stars": 0,
     "amt": 0,
-    "confidence": 0,
+    "confidence": 0.8,
     "name": "string",
     "subject": "string",
     "statement": "string",
@@ -162,8 +162,8 @@ Proper integration of evidence strengthens the credibility and authenticity of c
 Establishing trust relationships helps create a web of interconnected claims, enhancing the system’s reliability.
 
 - **Progressive Validation**:
-  - Use the `confidence` field to start claims with minimal certainty, allowing subsequent attestations or feedback to improve trust.
-  - Use `stars` for user-generated feedback and ratings.
+  - Use the `confidence` field to stake the credibility of the issuer on the claim. This reflects how much confidence the issuer has in the claim’s accuracy, enabling flexibility when incorporating claims from external sources.
+  - Use `stars` for user-generated feedback and ratings, distinct from the issuer's confidence level.
 - **Aspect Categorization**: Use the `aspect` field to group claims into specific categories or domains for better trust assessment.
 - **Linked Evidence**: Build strong associations between claims using `claimAddress` and `object` fields.
 
@@ -193,7 +193,8 @@ Verification systems provide the foundation for independently validating claims.
    - Ensure each image includes metadata, a cryptographic digest, and a timestamp.
 
 3. **Build Trust Relationships**:
-   - Leverage `stars` and `confidence` to develop progressive trust for the claim.
+   - Use `confidence` to reflect the issuer’s stake in the claim's credibility.
+   - Use `stars` for user-generated ratings and feedback.
 
 4. **Implement Verification**:
    - Validate cryptographic digests in `digestMultibase`.
@@ -214,7 +215,7 @@ Verification systems provide the foundation for independently validating claims.
    - Ensure all evidence is timestamped and cryptographically verified.
 
 3. **Build Trust Relationships**:
-   - Use `stars` and `confidence` to reflect evolving trust in the claim.
+   - Use `confidence` to stake the issuer's credibility on the claim and `stars` to reflect user feedback.
 
 4. **Verify Claims**:
    - Validate cryptographic digests and ensure source URIs are accessible.
@@ -225,7 +226,6 @@ Verification systems provide the foundation for independently validating claims.
 This guide represents **one implementation** of LinkedClaims, designed with robustness and semantic clarity in mind. It demonstrates how addressability, evidence integration, and trust relationships can be operationalized effectively. However, LinkedClaims is a flexible framework, and other valid implementations may differ based on specific needs and contexts.
 
 ---
-
 
 ## 6. Practical Considerations
 - Scaling solutions 
