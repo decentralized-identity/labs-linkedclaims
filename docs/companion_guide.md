@@ -89,6 +89,7 @@ The system creates multi-layered verification through
 3. Validators review and verify claims
 4. Skills can be shared with employers or professional networks
 5. Claims maintain privacy control while enabling verification
+![image](https://github.com/user-attachments/assets/d5c3ceb2-f039-43a1-9ed7-58633901b827)
 
 #### Technical Implementation
 
@@ -110,6 +111,33 @@ Evidence-based validation
 Professional endorsements
 Transparent skill documentation
 User data ownership and privacy
+
+                                              ┌────────────────────────────┐
+                                              │  Initial Skill Claim       │
+                                              └────────────┬───────────────┘
+                                                          ▼
+                                                  ┌─────────────────┐
+                                                  │   Validations   │
+                                                  └────────┬────────┘
+                                            ┌─────────┬────────┬─────────┐
+                                            ▼         ▼        ▼         ▼
+                                      ┌─────────┐ ┌──────┐ ┌────────┐ ┌─────────────┐
+                                      │Evidence │ │Self  │ │Third   │ │Professional │
+                                      │Uploads  │ │Docs  │ │Party   │ │References   │
+                                      └────┬────┘ └──┬───┘ └───┬────┘ └────┬────────┘
+                                           └────────┬─────────┬──────────┘
+                                                   ▼         ▼
+                                          ┌─────────────────────────┐
+                                          │    Skill Verification   │
+                                          └────────────┬────────────┘
+                                                      ▼
+                                          ┌───────────────────────────────┐
+                                          │     Shareable Credentials     │
+                                          └────────────┬──────────────────┘
+                                                      ▼
+                                          ┌─────────────────────────────────────┐
+                                          │  Professional Network Integration   │
+                                          └─────────────────────────────────────┘
 
 #### Impact and Results
 The implementation achieves:
