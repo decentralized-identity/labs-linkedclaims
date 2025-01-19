@@ -65,7 +65,86 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 ## 3.  Real-World Examples
 - Humanitarian aid tracking
 - Community impact verification
-- OpenCreds skills attestations and verifications
+### OpenCreds Skills Documentation and Verification
+
+#### Background
+OpenCreds demonstrates LinkedClaims implementation in skills verification and professional development tracking. The platform enables users to document various skills and experiences, from professional certifications to volunteer work, with a focus on building verifiable trust chains around competency claims.
+
+#### Implementation Journey
+
+**Initial Setup**
+[OpenCreds](https://opencreds.net/) implements a structured approach to skills documentation where each claim follows LinkedClaims core requirements with unique URIs and cryptographic signatures. The platform supports both self-attested skills and third-party validations.
+
+**Building the Trust Network**
+The system creates multi-layered verification through
+- Initial skill documentation by users
+- Supporting evidence uploads
+- Third-party validations
+- Professional recommendations
+- Achievement documentation
+
+**Verification Process Flow**
+1. Users document skills with detailed descriptions
+2. Evidence is attached to support claims
+3. Validators review and verify claims
+4. Skills can be shared with employers or professional networks
+5. Claims maintain privacy control while enabling verification
+![image](https://github.com/user-attachments/assets/d5c3ceb2-f039-43a1-9ed7-58633901b827)
+
+#### Technical Implementation
+
+**Claim Structure**
+```json
+{
+  "skillName": "required field",
+  "description": "detailed explanation",
+  "timeSpent": "duration",
+  "evidence": "supporting documentation",
+  "validations": "third-party verifications"
+}
+
+```
+#### Trust Building Mechanism
+
+Multi-step verification process
+Evidence-based validation
+Professional endorsements
+Transparent skill documentation
+User data ownership and privacy
+
+                                              ┌────────────────────────────┐
+                                              │  Initial Skill Claim       │
+                                              └────────────┬───────────────┘
+                                                          ▼
+                                                  ┌─────────────────┐
+                                                  │   Validations   │
+                                                  └────────┬────────┘
+                                            ┌─────────┬────────┬─────────┐
+                                            ▼         ▼        ▼         ▼
+                                      ┌─────────┐ ┌──────┐ ┌────────┐ ┌─────────────┐
+                                      │Evidence │ │Self  │ │Third   │ │Professional │
+                                      │Uploads  │ │Docs  │ │Party   │ │References   │
+                                      └────┬────┘ └──┬───┘ └───┬────┘ └────┬────────┘
+                                           └────────┬─────────┬──────────┘
+                                                   ▼         ▼
+                                          ┌─────────────────────────┐
+                                          │    Skill Verification   │
+                                          └────────────┬────────────┘
+                                                      ▼
+                                          ┌───────────────────────────────┐
+                                          │     Shareable Credentials     │
+                                          └────────────┬──────────────────┘
+                                                      ▼
+                                          ┌─────────────────────────────────────┐
+                                          │  Professional Network Integration   │
+                                          └─────────────────────────────────────┘
+
+#### Impact and Results
+The implementation achieves:
+Verifiable skills documentation
+Professional development tracking
+Trust networks for competency claims
+Privacy-preserving verification chains
 
 ## 4. Related Existing Projects
 
