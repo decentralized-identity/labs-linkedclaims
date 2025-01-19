@@ -21,6 +21,8 @@
 ### Introduction
  This companion guide serves as a practical resource for implementing the LinkedClaims pattern. While the LinkedClaims specification defines the requirements for creating verifiable, interconnected claims, this guide provides implementation guidance, best practices, and real-world examples. It helps developers and users to understand how to create and use claims that meet the core requirements: having a URI identifier, referencing a subject via URI, and including cryptographic signatures. While the formal specification defines the technical requirements for LinkedClaims, this guide shows you how to put those requirements into practice in real-world systems. Through examples and practical advice, this guide demonstrates how to implement these requirements and build trust networks across different platforms.
 
+ Throughout the decentralized identity and web of trust ecosystem, various projects have developed ways to connect and verify claims. Some, like attest.sh and Trustgraph.net (see [Related Projects](#4-related-existing-projects)), already implement key aspects of what we define as LinkedClaims. Others may fulfill the minimum requirements while implementing additional features. This guide helps you understand these existing implementations and how to work with or create systems that follow the LinkedClaims pattern.
+
  LinkedClaims iteslf  is a pattern for creating verifiable, interconnected claims in decentralized systems. It provides a foundation for building trust networks by enabling claims to be linked, verified, and trusted across different platforms and implementations. The standard requires that each claim must have its own URI identifier, must reference a subject via URI, and must be cryptographically signed. This allows claims to be connected together to form verifiable chains of trust while maintaining flexibility in implementation.
 
  Our goal is to help you move from understanding what LinkedClaims requires to knowing how to fulfill those requirements effectively in your own systems. Whether you're building a new implementation, integrating with existing ones or using LinkedClaims, this guide will provide the practical insights you need.
@@ -62,15 +64,13 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 
 ## 3.  Real-World Examples
 
-### Humanitarian Aid & Community Impact Verification
-
- ### AMURT Case
+### Humanitarian Aid & Community Impact Verification: AMURT
 #### Background
 AMURT (Ananda Marga Universal Relief Team) implemented LinkedClaims to validate their humanitarian and development work in Ebonyi, Nigeria. Their implementation showcases how organizations can build verifiable trust networks around development initiatives while maintaining transparency and accountability.
 
-#### Implementation Journey
+- Humanitarian aid tracking
+- Community impact verification
 
-**Initial Setup**
 AMURT base claim was sourced from AMURT's public [website](https://amrutfoundation.org.za/) about healthcare service delivery and community development projects. Each claim was assigned a unique URI and cryptographically signed, following LinkedClaims core requirements.
 
 **Building the Trust Network**
@@ -90,6 +90,34 @@ The verification system included multiple layers:
 ![Screenshot from 2025-01-14 01-23-04](https://github.com/user-attachments/assets/a1cf26a5-dd27-46c6-a738-2b8369de4e00)
 ![Screenshot from 2025-01-14 01-22-41](https://github.com/user-attachments/assets/e188aa11-6c6b-4bfa-8028-1f08e302d34c)
 
+
+### OpenCreds Skills Documentation and Verification
+
+#### Background
+OpenCreds demonstrates LinkedClaims implementation in skills verification and professional development tracking. The platform enables users to document various skills and experiences, from professional certifications to volunteer work, with a focus on building verifiable trust chains around competency claims.
+
+[OpenCreds](https://opencreds.net/) implements a structured approach to skills documentation where each claim follows LinkedClaims core requirements with unique URIs and cryptographic signatures. The platform supports both self-attested skills and third-party validations.
+
+**Building the Trust Network**
+The system creates multi-layered verification through
+- Initial skill documentation by users
+- Supporting evidence uploads
+- Third-party validations
+- Professional recommendations
+- Achievement documentation
+
+**Verification Process Flow**
+1. Users document skills with detailed descriptions
+2. Evidence is attached to support claims
+3. Validators review and verify claims
+4. Skills can be shared with employers or professional networks
+5. Claims maintain privacy control while enabling verification
+![image](https://github.com/user-attachments/assets/d5c3ceb2-f039-43a1-9ed7-58633901b827)
+
+
+#### Implementation Journey
+
+**Initial Setup**
 #### Technical Implementation
 
 **Claim Structure**
@@ -149,9 +177,60 @@ High confidence ratings through multiple validations
 This example demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
 
 
-
+### OpenCreds technical example
 
 - OpenCreds skills attestations and verifications
+``` json {
+  "skillName": "required field",
+  "description": "detailed explanation",
+  "timeSpent": "duration",
+  "evidence": "supporting documentation",
+  "validations": "third-party verifications"
+}
+```
+
+#### Trust Building Mechanism
+
+Multi-step verification process
+Evidence-based validation
+Professional endorsements
+Transparent skill documentation
+User data ownership and privacy
+
+                                              ┌────────────────────────────┐
+                                              │  Initial Skill Claim       │
+                                              └────────────┬───────────────┘
+                                                          ▼
+                                                  ┌─────────────────┐
+                                                  │   Validations   │
+                                                  └────────┬────────┘
+                                            ┌─────────┬────────┬─────────┐
+                                            ▼         ▼        ▼         ▼
+                                      ┌─────────┐ ┌──────┐ ┌────────┐ ┌─────────────┐
+                                      │Evidence │ │Self  │ │Third   │ │Professional │
+                                      │Uploads  │ │Docs  │ │Party   │ │References   │
+                                      └────┬────┘ └──┬───┘ └───┬────┘ └────┬────────┘
+                                           └────────┬─────────┬──────────┘
+                                                   ▼         ▼
+                                          ┌─────────────────────────┐
+                                          │    Skill Verification   │
+                                          └────────────┬────────────┘
+                                                      ▼
+                                          ┌───────────────────────────────┐
+                                          │     Shareable Credentials     │
+                                          └────────────┬──────────────────┘
+                                                      ▼
+                                          ┌─────────────────────────────────────┐
+                                          │  Professional Network Integration   │
+                                          └─────────────────────────────────────┘
+
+#### Impact and Results
+The implementation achieves:
+Verifiable skills documentation
+Professional development tracking
+Trust networks for competency claims
+Privacy-preserving verification chains
+
 
 ## 4. Related Existing Projects
 
