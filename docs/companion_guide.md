@@ -63,16 +63,39 @@ Will show where LinkedClaims fits, help in decision-making, clarifiy unique valu
 
 
 ## 3.  Real-World Examples
+
+### Humanitarian Aid & Community Impact Verification: AMURT
+#### Background
+AMURT (Ananda Marga Universal Relief Team) implemented LinkedClaims to validate their humanitarian and development work in Ebonyi, Nigeria. Their implementation showcases how organizations can build verifiable trust networks around development initiatives while maintaining transparency and accountability.
+
 - Humanitarian aid tracking
 - Community impact verification
+
+AMURT base claim was sourced from AMURT's public [website](https://amrutfoundation.org.za/) about healthcare service delivery and community development projects. Each claim was assigned a unique URI and cryptographically signed, following LinkedClaims core requirements.
+
+**Building the Trust Network**
+The verification system included multiple layers:
+- Government partnership validations
+- Community leader attestations
+- Beneficiary testimonials
+- Independent site visit reports 
+
+**Verification Process Flow**
+1. Base claim from AMURT's public website
+2. Site visitors validate claims through direct observation
+3. Community leaders and beneficiaries provide attestations
+4. Government partners verify collaboration claims
+5. All claims are linked and cross-referenced through URIs
+
+![Screenshot from 2025-01-14 01-23-04](https://github.com/user-attachments/assets/a1cf26a5-dd27-46c6-a738-2b8369de4e00)
+![Screenshot from 2025-01-14 01-22-41](https://github.com/user-attachments/assets/e188aa11-6c6b-4bfa-8028-1f08e302d34c)
+
+
 ### OpenCreds Skills Documentation and Verification
 
 #### Background
 OpenCreds demonstrates LinkedClaims implementation in skills verification and professional development tracking. The platform enables users to document various skills and experiences, from professional certifications to volunteer work, with a focus on building verifiable trust chains around competency claims.
 
-#### Implementation Journey
-
-**Initial Setup**
 [OpenCreds](https://opencreds.net/) implements a structured approach to skills documentation where each claim follows LinkedClaims core requirements with unique URIs and cryptographic signatures. The platform supports both self-attested skills and third-party validations.
 
 **Building the Trust Network**
@@ -91,19 +114,81 @@ The system creates multi-layered verification through
 5. Claims maintain privacy control while enabling verification
 ![image](https://github.com/user-attachments/assets/d5c3ceb2-f039-43a1-9ed7-58633901b827)
 
+
+#### Implementation Journey
+
+**Initial Setup**
 #### Technical Implementation
 
 **Claim Structure**
 ```json
 {
+  "claim": "rated",
+  "effectiveDate": "5/21/2024",
+  "confidence": 0.95,
+  "aspect": "impact:social",
+  "evidence": "site visits, beneficiary feedback"
+}
+```
+
+#### Trust Building Mechanism
+
+High confidence ratings (0.95) supported by multiple validations
+Second-hand verification from trusted community members
+Clear impact assessment through social aspect tracking
+Site visitors validate claims through direct observation
+
+
+#### Impact and Results
+The implementation achieved:
+
+Transparent documentation of healthcare initiatives
+Verifiable economic empowerment outcomes
+Connected trust chains across stakeholders
+High confidence ratings through multiple validations
+
+
+                                                ┌─────────────────────────────────┐
+                                                │Initial Claim from AMURT Website │
+                                                └────────┬────────────────────────┘
+                                                        ▼
+                                                ┌─────────────────┐
+                                                │   Validations   │
+                                                └────────┬────────┘
+                                          ┌─────────┬────────┬─────────┐
+                                          ▼         ▼        ▼         ▼
+                                    ┌─────────┐ ┌──────┐ ┌────────┐ ┌─────────────┐
+                                    │  Gov't  │ │Staff │ │Community││Site Visits  │
+                                    └────┬────┘ └──┬───┘ └───┬────┘ └────┬────────┘
+                                         └────────┬─────────┬──────────┘
+                                                 ▼         ▼
+                                        ┌─────────────────────────┐
+                                        │    Impact Evidence      │
+                                        └────────────┬────────────┘
+                                                    ▼
+                                        ┌───────────────────────────────┐
+                                        │Beneficiary Claims/Attestations│
+                                        └────────────┬──────────────────┘
+                                                    ▼
+                                        ┌─────────────────────────────────────┐
+                                        │Site Visit Reports-Trust Score: 0.95 │
+                                        └─────────────────────────────────────┘
+
+This example demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
+
+
+### OpenCreds technical example
+
+- OpenCreds skills attestations and verifications
+``` json {
   "skillName": "required field",
   "description": "detailed explanation",
   "timeSpent": "duration",
   "evidence": "supporting documentation",
   "validations": "third-party verifications"
 }
-
 ```
+
 #### Trust Building Mechanism
 
 Multi-step verification process
@@ -145,6 +230,7 @@ Verifiable skills documentation
 Professional development tracking
 Trust networks for competency claims
 Privacy-preserving verification chains
+
 
 ## 4. Related Existing Projects
 
