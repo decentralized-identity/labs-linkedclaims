@@ -9,14 +9,28 @@
 \usepackage{minted}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage[super]{natbib}
+\usepackage{authblk}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\bibliographystyle{unsrt} 
+
+% Styling
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\makeatletter
+\renewcommand\AB@affilsepx{, \protect\Affilfont}
+\makeatother
 
 % Document metadata
 \title{Addressability is The Missing Link (in the Web of Trust)\\[0.5em]\Large LinkedClaims: An Open Standard for Addressable Claims}
-\author{
-    First Author\thanks{Organization 1} \and
-    Second Author\thanks{Organization 2} \and
-    Additional Authors\thanks{Their Organizations}
-}
+
+\author[1]{Golda Velez}
+\author[2]{...}
+\author[1]{Agnes Koinange}
+\affil[1]{LinkedTrust}
+\affil[2]{...}
+
 \date{\today}
 
 \begin{document}
@@ -27,68 +41,103 @@
 Trust and credibility of information is critical to a functioning society. While cryptographic signing and blockchain validation provide technical verification, they are insufficient to predict the truth of an assertion. This paper introduces LinkedClaims, an open standard for addressable claims that enables cross-domain credibility assessment. We present the technical specification, analyze existing implementations across diverse domains, and outline the ecosystem development pathway.
 \end{abstract}
 
-\section{Abstract \& Technical Specification}
-\subsection{Cross-system Trust Verification Challenge}
-\subsection{Open Standard Solution}
-\subsection{Technical Requirements Overview}
+\section{Executive Summary}
 
-\section{Technical Architecture \& Security}
+"\textbf{Resistance to lies} continues to be the first step in the pursuit of freedom from fear and coercion"\cite{1} - nobel prize winner Liu Xiaobo centers the ability to resist lies as the core effort that anyone can make towards a free society.  Clearly sharing information online by itself, can accelerate the dissemination of truth OR lies - or various shades of misinformation.  The question, then, is what type of technical specification can enable resistance to lies - what enables each viewer to assess for themselves the credibility of what they see, and if desired to add their assessment in a meaningful way?  
+
+How do people decide what to believe?  The tendency to believe statements that align with our existing beliefs, without the ability to check evidence, has pernicious consequences.  Making it easy to \textbf{examine} the chain of trust and the evidence with some confidence, as well as to \textbf{add} into that chain in a way that others can inspect, are two key elements we want to recognize and enable.  Therefore we start with three MUST requirements: 
+\begin{itemize}
+    \item A LinkedClaim MUST be cryptographically signed, such as with a DID.  This allows a viewer to inspect at least who has signed the claim and thus staked some of their credibility.
+    \item A LinkedClaim MUST \textbf{itself have an identifier} that is a well-formed URI.  This allows anyone to make at attestation ABOUT the claim itself, whether to support, reject or qualify it.
+    \item A LinkedClaim MUST have a subject that can be any valid URI.  This allows two claims to be clearly made about the same subject, and for subjects to be clearly connected to each other.
+\end{itemize}
+In many cases, the user of the technology will not be the one who has first hand knowledge about the claim.  Thus it is important also to provide a source or evidence, and it is desireable for that evidence to be tamper proof, leading to the first SHOULD
+\begin{itemize}
+    \item SHOULD contain evidence such as links to a source or attachments, optionally hashlinked
+\end{itemize}
+In this paper, we will examine current, compelling real world use cases for LinkedClaims, as well as existing technical implementations that ALREADY qualify under the proposed standard. We will expand on these first requirements to the full specification of LinkedClaims Conformance Requirements published at the Decentralized Identify Foundation Lab.
+
+Finally, we will demonstrate that conformance to the LinkedClaims requirements allows the connection of claims created with different technical implementations and in different domains to be combined in a credibility assessment that can result in greater confidence than examining one focus domain alone.
+
+\section{Introduction: Case Studies Across Domains}
+Independent verification of claims is needed in many disparate domains.
+
+\subsection{Philanthropy: Candid.org}
+At Candid, a simple and frequent issue is to identify whether the claimant to administer a profile is genuinely a representative of the nonprofit.
+
+\subsection{Skill and Experience Credentials: T3 Innovation Network}
+Individuals outside of traditional academia often lack a way to validate the skills they have attained in a reliable digital manner.  The T3 Innovation Network, in cooperation with LinkedTrust and the US Chambers of Commerce Foundation, has developed a system of self-attested credentials that can be self-signed and linked to recommender validations that are separately signed and linked to the original claim.
+
+\subsection{Climate Action: Open Forest Protocol}
+
+Carbon credits are notoriously subject to false claims, as well as excessive bureaucracy for real forestry projects.  Open Forest Protocol has developed a simple app for gathering the required data for tree growth in a reliable way, and enables independent validators to attest to the quality of the data.
+
+\subsection{Supply Chain}
+
+\subsection{Digital Identity}
+
+\subsection{Proof of Personhood Credentials (PHC)}
+
+\subsection{Universal Media Identifiers (UMiD)}
+
+\section{Sources of Trust and Risk Assessments}
+\subsection{Issuer Registries and Progressive Trust}
+Progressive Trust is a key concept.
+\subsection{Risk Assets as a Concept}
+.. in the Risk profession, there is the concept of the 'assets' of an attacker, being any long-lived entity where trust may be assigned: an IP address, device address, card fingerprint, login, email, and similar ..
+\subsection{Reliance on DNS}
+\subsection{Blockchain and Incentive Mechanisms}
+
+\section{Technical Specification}
 \subsection{URI-addressability Requirements}
-\subsection{Hashability and Cryptographic Standards}
-\subsection{Security Analysis}
-\subsection{Integration Flexibility}
-\subsection{Privacy Preservation Architecture}
+\subsection{Hashability and Content Integrity}
+\subsection{Concept of Inbox}
+\subsection{Desired Fields}
+\subsection{Privacy Preservation and Access Control}
 
 \section{Implementation Analysis}
+\subsection{Reference Implementation}
+The minimal semantic vocabulary defined at http://cooperation.org/credentials/v1/ may be used for new implementations or as a 'glue' to connect existing addressable claims.
+\subsection{Recognition of Existing Compliant Systems}
+\subsubsection{Philanthropy: Candid.org}
+..vocab used, json example..
+
+\subsection{Skill and Experience Credentials: T3 Innovation Network}
+..OBV3, json example, links..
+
+\subsection{Climate Action: Open Forest Protocol}
+
+..address to atlas, address to NEAR Protocol signed data..
+
+\subsection{Supply Chain}
+..the id standard..
+
+\subsection{Digital Identity}
+..
+
+\subsection{Proof of Personhood Credentials (PHC)}
+..
+
+\subsection{Universal Media Identifiers (UMiD)}
+..
+
+\subsection{Profile and Mappings}
 \subsection{Compliance Testing Framework}
-\subsection{Implementation Examples}
-\subsubsection{Skill Credentials System}
-\begin{itemize}
-    \item US Chamber of Commerce Implementation
-    \item Cross-border Recognition Patterns
-    \item Integration with Educational Systems
-\end{itemize}
-
-\subsubsection{Supply Chain Verification}
-\begin{itemize}
-    \item UN CRM Implementation
-    \item Traceability Architecture
-    \item Multi-party Validation Flows
-\end{itemize}
-
-\subsubsection{Environmental Monitoring}
-\begin{itemize}
-    \item Open Forest Protocol Integration
-    \item Sensor Data Validation
-    \item Impact Assessment Framework
-\end{itemize}
-
-\subsubsection{Philanthropic Impact Tracking}
-\begin{itemize}
-    \item Grant Outcome Verification
-    \item Impact Measurement Standards
-    \item Cross-organization Validation
-\end{itemize}
-
-\subsubsection{Blockchain Wallet Credentials}
-\begin{itemize}
-    \item Identity Verification Patterns
-    \item Privacy-preserving Claims
-    \item Cross-chain Compatibility
-\end{itemize}
-
-\subsection{Integration Patterns}
-\subsubsection{Blockchain Compatibility}
-\subsubsection{Verifiable Credentials Alignment}
-\subsubsection{Web Embedding Methods}
-
 \subsection{Open Source Libraries}
 \subsection{Private Data Handling Patterns}
+
+\section{Technical Aspects}
+\subsection{Issuer Registries}
+\subsection{Blockchain vs Verifiable Credentials}
+\subsection{Publishing and Discoverability}
+\subsubsection{Ceramic Network}
+\subsubsection{ATProto}
 
 \section{Community Applications \& Use Cases}
 \subsection{Current Implementations}
 \subsection{Network Effects}
 \subsection{Cross-domain Benefits}
+A widely used, heterogeneous trust network will be more robust against attack, and will enable important but rare applications.
 \subsection{Public/Private Data Models}
 
 \section{Ecosystem Development}
