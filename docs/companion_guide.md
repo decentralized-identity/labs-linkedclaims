@@ -117,10 +117,11 @@ Use Case Considerations
     "signatureValue": "zQeVbY4oey5q66..."
   }
 }
-
+``` 
 
 **2. Verifiable Credential Implementation**
-jsonCopy{
+``` json
+{
   "@context": ["https://www.w3.org/2018/credentials/v1"],
   "type": ["VerifiableCredential"],
   "issuer": "did:example:123",
@@ -136,9 +137,9 @@ jsonCopy{
     "jws": "eyJhbGci..."
   }
 }
-
-3. Progressive Trust Building Example in LinkedClaims
-
+``` 
+**3. Progressive Trust Building Example in LinkedClaims**
+``` json
 {
   "id": "https://claims.example.com/claim/123",
   "subject": "https://resource.example.com/entity/456",
@@ -161,6 +162,8 @@ jsonCopy{
     "signatureValue": "zQeVbY4oey5q66..."
   }
 }
+
+``` 
 Through this balanced approach to trust and verification, LinkedClaims provides a practical solution for building connected, verifiable systems while maintaining the flexibility to adapt to various use cases and requirements.
 
 
