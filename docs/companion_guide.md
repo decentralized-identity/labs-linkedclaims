@@ -61,7 +61,111 @@ Developers who intend to implement the LinkedClaims specification, technical com
 ### Guide Structure
 
 ## 2.Technology Comparison
-Will show where LinkedClaims fits, help in decision-making, clarifiy unique value proposition and demonstrates key differentiators
+This shows where LinkedClaims fits, how it helps in decision-making, clarifiys its unique value proposition and demonstrates its key differentiators
+
+
+**Use Case Considerations**
+  When choosing between LinkedClaims and alternative solutions, you should consider your specific needs for trust building, verification, and interconnectivity. LinkedClaims is particularly well-suited for:
+
+- Systems requiring progressive trust development
+- Applications needing flexible verification paths
+- Scenarios where claims need to be linked across platforms
+- Cases where web-native integration is important
+
+| Feature | LinkedClaims | Verifiable Credentials | Blockchain Attestations | Traditional PKI |
+|---------|-------------|----------------------|------------------------|-----------------|
+| **URI Addressing** | Required | Optional | Varies | Not Required |
+| **Subject Reference** | URI-based | Flexible | Hash-based | Certificate-based |
+| **Cryptographic Signing** | Required | Required | Required | Required |
+| **Trust Model** | Progressive | Issuer-based | Consensus-based | Hierarchical |
+| **Privacy Model** | Flexible | Selective Disclosure | Public by Default | Limited |
+| **Implementation Complexity** | Low | Medium | High | High |
+| **Interoperability** | High | Medium | Varies | Limited |
+
+### Key Differentiators
+
+1. **URI-Centric Approach**
+   - Every claim must have a URI identifier
+   - Subjects must be URI-addressable
+   - Enables web-native linking and discovery
+
+2. **Progressive Trust Building**
+   - Claims can be incrementally validated
+   - Multiple validation paths supported
+   - Flexible trust networks possible
+
+3. **Implementation Flexibility**
+   - Minimal core requirements
+   - Adaptable to various use cases
+   - Compatible with existing standards
+
+4. **Interoperability Focus**
+   - Platform-agnostic design
+   - Standard linking mechanisms
+   - Easy integration with web infrastructure
+
+### Implementation Examples
+
+**1. LinkedClaims Basic Implementation**
+```json
+{
+  "id": "https://claims.example.com/claim/123",
+  "subject": "https://resource.example.com/entity/456",
+  "statement": "This resource has been verified",
+  "signature": {
+    "type": "Ed25519Signature2020",
+    "verificationMethod": "did:example:abc#key-1",
+    "signatureValue": "zQeVbY4oey5q66..."
+  }
+}
+``` 
+
+**2. Verifiable Credential Implementation**
+``` json
+{
+  "@context": ["https://www.w3.org/2018/credentials/v1"],
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:123",
+  "credentialSubject": {
+    "id": "did:example:456",
+    "claim": "Resource verification"
+  },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "created": "2024-01-20T12:00:00Z",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:example:123#key-1",
+    "jws": "eyJhbGci..."
+  }
+}
+``` 
+**3. Progressive Trust Building Example in LinkedClaims**
+``` json
+{
+  "id": "https://claims.example.com/claim/123",
+  "subject": "https://resource.example.com/entity/456",
+  "statement": "Skills verification complete",
+  "validations": [
+    {
+      "id": "https://validator1.example.com/validation/789",
+      "type": "PeerReview",
+      "confidence": 0.8
+    },
+    {
+      "id": "https://validator2.example.com/validation/101",
+      "type": "ExpertAssessment",
+      "confidence": 0.95
+    }
+  ],
+  "signature": {
+    "type": "Ed25519Signature2020",
+    "verificationMethod": "did:example:abc#key-1",
+    "signatureValue": "zQeVbY4oey5q66..."
+  }
+}
+
+``` 
+Through this balanced approach to trust and verification, LinkedClaims provides a practical solution for building connected, verifiable systems while maintaining the flexibility to adapt to various use cases and requirements.
 
 
 ## 3.  Real-World Examples
