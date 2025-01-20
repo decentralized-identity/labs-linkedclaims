@@ -92,34 +92,6 @@ The verification system included multiple layers:
 ![Screenshot from 2025-01-14 01-23-04](https://github.com/user-attachments/assets/a1cf26a5-dd27-46c6-a738-2b8369de4e00)
 ![Screenshot from 2025-01-14 01-22-41](https://github.com/user-attachments/assets/e188aa11-6c6b-4bfa-8028-1f08e302d34c)
 
-
-### OpenCreds Skills Documentation and Verification
-
-#### Background
-OpenCreds demonstrates LinkedClaims implementation in skills verification and professional development tracking. The platform enables users to document various skills and experiences, from professional certifications to volunteer work, with a focus on building verifiable trust chains around competency claims.
-
-[OpenCreds](https://opencreds.net/) implements a structured approach to skills documentation where each claim follows LinkedClaims core requirements with unique URIs and cryptographic signatures. The platform supports both self-attested skills and third-party validations.
-
-**Building the Trust Network**
-The system creates multi-layered verification through
-- Initial skill documentation by users
-- Supporting evidence uploads
-- Third-party validations
-- Professional recommendations
-- Achievement documentation
-
-**Verification Process Flow**
-1. Users document skills with detailed descriptions
-2. Evidence is attached to support claims
-3. Validators review and verify claims
-4. Skills can be shared with employers or professional networks
-5. Claims maintain privacy control while enabling verification
-![image](https://github.com/user-attachments/assets/d5c3ceb2-f039-43a1-9ed7-58633901b827)
-
-
-#### Implementation Journey
-
-**Initial Setup**
 #### Technical Implementation
 
 **Claim Structure**
@@ -177,6 +149,30 @@ High confidence ratings through multiple validations
                                         └─────────────────────────────────────┘
 
 This example demonstrates how LinkedClaims can be effectively implemented in humanitarian contexts, providing a clear framework for building and verifying trust across different stakeholders.
+
+
+### OpenCreds Skills Documentation and Verification
+
+#### Background
+OpenCreds demonstrates LinkedClaims implementation in skills verification and professional development tracking. The platform enables users to document various skills and experiences, from professional certifications to volunteer work, with a focus on building verifiable trust chains around competency claims.
+
+[OpenCreds](https://opencreds.net/) implements a structured approach to skills documentation where each claim follows LinkedClaims core requirements with unique URIs and cryptographic signatures. The platform supports both self-attested skills and third-party validations.
+
+**Building the Trust Network**
+The system creates multi-layered verification through
+- Initial skill documentation by users
+- Supporting evidence uploads
+- Third-party validations
+- Professional recommendations
+- Achievement documentation
+
+**Verification Process Flow**
+1. Users document skills with detailed descriptions
+2. Evidence is attached to support claims
+3. Validators review and verify claims
+4. Skills can be shared with employers or professional networks
+5. Claims maintain privacy control while enabling verification
+![image](https://github.com/user-attachments/assets/d5c3ceb2-f039-43a1-9ed7-58633901b827)
 
 
 ### OpenCreds technical example
