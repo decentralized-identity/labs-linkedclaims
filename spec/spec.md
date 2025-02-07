@@ -130,6 +130,7 @@ A LinkedClaim:
 * **SHOULD** include a date that is in the signed data
 * **SHOULD** contain evidence such as links to a source or attachments, optionally hashlinked
 * **SHOULD** have a URI-addressable cryptographic signer
+* **SHOULD** have a geolocation when referencing a real-world event
 * **MAY** have a narrative statement
 * **MAY** have a subject that itself is a claim
 * **MAY** be a W3C Verifiable Credential or similar digital credential specification
