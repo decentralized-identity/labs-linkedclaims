@@ -232,21 +232,21 @@ Privacy-preserving verification chains
 
 ## 4. Related Existing Projects
 
-| Project | Type | Implementation | Vocabulary | Pattern Match | Links |
-|---------|------|----------------|------------|---------------|---------------------|
-| **attest.sh** | Blockchain Attestation | Ethereum | Schema.org + Custom | On-chain attestations with evidence linking | [attest.sh](https://attest.org/) |
-| Trustgraph.net | Graph Database | Neo4j | Atoms | Trust network with linked claims | [Trustgraph.net](https://trustgraph.net/) |
-| **Issuer Registries** | Registry | Various | W3C VC | Issuer verification chains | [Issuer Registries](https://credentialengine.org/resources/issuer-registries-establishing-trust-privacy-and-efficiency-in-verifying-credential-issuers/) |
-| **Proof of Humanity** | Identity Verification | Ethereum | Custom | Human verification with vouching chains | [PoH](https://proofofhumanity.id) |
-| **Krebit** | Social Verification | IPFS/Ceramic | JSON-LD | Verifiable experience claims | [Krebit](https://krebit.id/) |
-| **Orange Protocol** | Trust Framework | Graph Protocol | Trust Schema | Reputation attestations | [Docs](https://www.orangeprotocol.io/) |
-| **uPort**           | Self-Sovereign Identity | Ethereum               | JSON-LD, W3C VC            | Identity claims with cryptographic verification        | [uPort](https://www.uport.me/)     |
-| **DIDComm**         | Secure Communication   | Aries Framework         | JSON-LD, DID Documents     | Peer-to-peer verifiable claims exchange                | [DIDComm](https://didcomm.org/)    |
-| **Veramo**          | Verifiable Credential  | Node.js Framework       | JSON-LD, W3C VC            | Decentralized identity and verifiable credential APIs  | [Veramo](https://veramo.io/)       |
-| **Ceramic**         | Decentralized Data Streams | IPFS/Ceramic          | JSON-LD, IDX Protocol      | Linked, updateable claims with decentralized storage   | [Ceramic](https://ceramic.network/) |
-| **BrightID**        | Decentralized Identity | Custom                  | Custom                     | Proof of uniqueness for trust building                 | [BrightID](https://brightid.org/)  |
-| **Serto**           | Decentralized Identity | JSON-LD, W3C VC         | W3C Verifiable Credentials | Linked claims for interoperable identity               | [Serto](https://www.serto.id/)     |
-| **Clerk**           | Authentication Platform | REST APIs, SDKs         | OAuth, OpenID Connect      | User authentication and management flows                    | [Clerk](https://clerk.dev/)        |
+| Project | Type | Implementation | Vocabulary | Pattern Match |
+|---------|------|----------------|------------|---------------|
+| [**attest.sh**](https://attest.org/) | Blockchain Attestation | Ethereum | Schema.org + Custom | On-chain attestations with evidence linking |
+| [**Trustgraph.net**](https://trustgraph.net/) | Graph Database | Neo4j | Atoms | Trust network with linked claims |
+| [**Issuer Registries**](https://credentialengine.org/resources/issuer-registries-establishing-trust-privacy-and-efficiency-in-verifying-credential-issuers/) | Registry | Various | W3C VC | Issuer verification chains |
+| [**Proof of Humanity**](https://proofofhumanity.id) | Identity Verification | Ethereum | Custom | Human verification with vouching chains |
+| [**Krebit**](https://krebit.id/) | Social Verification | IPFS/Ceramic | JSON-LD | Verifiable experience claims |
+| [**Orange Protocol**](https://www.orangeprotocol.io/) | Trust Framework | Graph Protocol | Trust Schema | Reputation attestations |
+| [**uPort**](https://www.uport.me/)            | Self-Sovereign Identity | Ethereum               | JSON-LD, W3C VC            | Identity claims with cryptographic verification        |
+| [**DIDComm**](https://didcomm.org/)         | Secure Communication   | Aries Framework         | JSON-LD, DID Documents     | Peer-to-peer verifiable claims exchange                |
+| [**Veramo**](https://veramo.io/)          | Verifiable Credential  | Node.js Framework       | JSON-LD, W3C VC            | Decentralized identity and verifiable credential APIs  |
+| [**Ceramic**](https://ceramic.network/)         | Decentralized Data Streams | IPFS/Ceramic          | JSON-LD, IDX Protocol      | Linked, updateable claims with decentralized storage   |
+| [**BrightID**](https://brightid.org/)        | Decentralized Identity | Custom                  | Custom                     | Proof of uniqueness for trust building                 |
+| [**Serto**](https://www.serto.id/)           | Decentralized Identity | JSON-LD, W3C VC         | W3C Verifiable Credentials | Linked claims for interoperable identity               |
+| [**Clerk**](https://clerk.dev/)            | Authentication Platform | REST APIs, SDKs         | OAuth, OpenID Connect      | User authentication and management flows                    |
 
 
 ---
